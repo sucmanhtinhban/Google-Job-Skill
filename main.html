@@ -57,9 +57,9 @@
         <script>
             function OpenPage() {
             var dropdown = document.getElementById("dropdown");
-            var selectedValue = dropdown.options[dropdown.selectedIndex].value;
-            localStorage.setItem("selectedValue", selectedValue);
-            window.location.href = "";
+            var category = dropdown.options[dropdown.selectedIndex].value;
+            localStorage.setItem("category", category);
+            window.location.href = "main2.html";
             }
         </script>
         </div>
