@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        button {
+        background-color: #04AA6D; /* Green */
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        display: inline-block;
+        font-size: 15px;
+        margin: 4px 1px;
+        cursor: pointer;
+        border-radius: 12px;
+        }
+        #Title {
+        position: absolute;
+        top: 200px; /* Replace with the desired vertical position */
+        left: 200px; /* Replace with the desired horizontal position */
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  <body>
+    <div style="width: 100%; height: 100%; position: relative; background: white">
+        <div style="width: 960x; height: 852px; left: 0px; top: 172px; position: absolute;"></div>
+        <div style="left: 176px; top: 103px; position: absolute; justify-content: flex-start; align-items: flex-start; gap: 124px; display: inline-flex">
+            <div style="color: #0069CA; font-size: 48px; font-family: Inter; font-weight: 700; word-wrap: break-word">TITTLE</div>
+            <div style="justify-content: flex-start; align-items: flex-start; display: flex">
+                <div style="padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; justify-content: center; align-items: center; gap: 10px; display: flex">
+                    <div style="color: #C00000; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">CATEGORIES</div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 1439px; height: 545px; padding-top: 72px; padding-bottom: 72px; left: 1px; top: 1038px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: center; gap: 131px; display: inline-flex">
+            <div style="flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 32px; display: flex">
+                <div style="width: 1095px; height: 0px; border: 1px black solid"></div>
+                <div style="justify-content: flex-start; align-items: flex-start; gap: 36px; display: inline-flex">
+                    <div style="width: 190px; height: 74px; text-align: center; color: #00519B; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">BÙI GIA PHÚ<br/>ITDSIU21107</div>
+                    <div style="width: 71px; height: 0px; transform: rotate(90deg); transform-origin: 0 0; border: 1px black solid"></div>
+                    <div style="width: 220px; height: 74px; text-align: center; color: #00519B; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">ĐỖ DƯƠNG THỊNH<br/>ITDSIU21121</div>
+                    <div style="width: 71px; height: 0px; transform: rotate(90deg); transform-origin: 0 0; border: 1px black solid"></div>
+                    <div style="width: 245px; height: 74px; text-align: center; color: #00519B; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">NGUYỄN XUÂN VINH<br/>ITDSIU21069</div>
+                    <div style="width: 71px; height: 0px; transform: rotate(90deg); transform-origin: 0 0; border: 1px black solid"></div>
+                    <div style="width: 230px; height: 74px; text-align: center; color: #00519B; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">HOÀNG VĂN MẠNH<br/>ITDSIU21099</div>
+                </div>
+            </div>
+        </div>
+        <div id="Title"></div>
+        <div style="left: 763px; top: 196px; position: absolute; justify-content: flex-start; align-items: flex-start; gap: 28px; display: inline-flex">
+            <button onclick="drawChart(1, 10)">DEGREE</button>
+            <button onclick="drawChart(2, 10)">SOFT SKILL</button>
+            <button onclick="drawChart(3, 10)">KNOWLEDGE</button>
+        </div>
+    </div>
+    <div class="chart"></div>
+    <script src="drawRadarChart.js"></script>
+    <script src="drawBarChart.js"></script>
+    <script>
+        var category = localStorage.getItem("category");
+        function drawChart(type) { 
+        if(type === 2){
+            d3.csv('SoftSkill_jobskill.csv').then((data) => {
+            console.log(data);
+            drawRadarChart(data, category, 960, 500);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+        else if(type === 3){
+            d3.csv('Knowledge.csv').then((data) => {
+            console.log(data);
+            drawRadarChart(data, category, 960, 500);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+        else if(type === 1){
+            d3.csv('Degree.csv').then((data) => {
+            console.log(data);
+            drawBarChart(data, category, 960, 500);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+        }
+        // Fetch the CSV data file
+        fetch('Category_Title.csv')
+        .then(response => response.text())
+        .then(data => {
+            // Split the CSV data into rows
+            const rows = data.split('\n');
+
+            // Split the first row into columns
+            const columns = rows[0].split(',');
+
+            // Find the index of the column that matches the specific string
+            const columnIndex = columns.findIndex(column => column.trim() === category);
+
+            if (columnIndex !== -1) {
+            // Column found, extract the whole column from the data
+            const columnData = rows.slice(1).map(row => row.split(',')[columnIndex]);
+
+            // Transform the array into a formatted list with each value on a separate line
+            const Title = columnData
+                .filter(item => item && typeof item === 'string' && item.trim() !== "") // Check for non-empty strings
+                .map(item => item.replace(/"/g, "")) // Remove quotes from each item
+                .join("<br>"); // Join the items with a line break
+
+            // Set the formatted list as the content of the HTML element
+            document.getElementById("Title").innerHTML = Title;
+            } else {
+            console.log('Column not found.');
+            }
+        })
+        .catch(error => {
+        console.error('Error fetching or processing the CSV data:', error);
+        });
+    </script>
+  </body>
+</html>
+
+
+
