@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<style>
+    .container {
+        position: relative;
+        transform: translate(40%, 50%);
+        }
+    #dropdown{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 8px 30px 9px 10px;
+    font-size: 16px;
+    }
+</style>
+<head>
+</head>
+<body>
+    <div>
+        <div style="width: 100%; height: 20%; justify-content: flex-start; align-items: flex-start; gap: 124px; display: inline-flex">
+            <div style="color: #0069CA; font-size: 60px; font-family: Inter; font-weight: 700; word-wrap: break-word">GOOGLE JOB SKILL</div>
+            <div style="justify-content: flex-start; align-items: flex-start; display: flex">
+                <div style="padding-left: 76px; padding-right: 24px; padding-top: 27px; padding-bottom: 10px; justify-content: center; align-items: center; gap: 10px; display: flex">
+                    <div style="color: #006ac0; font-size: 40px; font-family: Inter; font-weight: 700; word-wrap: break-word">CATEGORY</div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <select id="dropdown">
+            <option value="Choose Category">Choose Category</option>
+            <option value="Administrative">Administrative</option>
+            <option value="Business Strategy">Business Strategy</option>
+            <option value="Data Center & Network">Data Center & Network</option>
+            <option value="Developer Relations">Developer Relations</option>
+            <option value="Finance">Finance</option>
+            <option value="Hardware Engineering">Hardware Engineering</option>
+            <option value="IT & Data Management">IT & Data Management</option>
+            <option value="Legal & Government Relations">Legal & Government Relations</option>
+            <option value="Manufacturing & Supply Chain">Manufacturing & Supply Chain</option>
+            <option value="Marketing & Communications">Marketing & Communications</option>
+            <option value="Network Engineering">Network Engineering</option>
+            <option value="Partnerships">Partnerships</option>
+            <option value="People Operations">People Operations</option>
+            <option value="Product & Customer Support">Product & Customer Support</option>
+            <option value="Program Management">Program Management</option>
+            <option value="Real Estate & Workplace Services">Real Estate & Workplace Services</option>
+            <option value="Sales & Account Management">Sales & Account Management</option>
+            <option value="Sales Operations">Sales Operations</option>
+            <option value="Software Engineering">Software Engineering</option>
+            <option value="Technical Infrastructure">Technical Infrastructure</option>
+            <option value="Technical Solutions">Technical Solutions</option>
+            <option value="Technical Writing">Technical Writing</option>
+            <option value="User Experience & Design">User Experience & Design</option>
+            </select>
+            <button onclick="OpenPage()">Go</button>
+        
+        <script>
+            function OpenPage() {
+            var dropdown = document.getElementById("dropdown");
+            var selectedValue = dropdown.options[dropdown.selectedIndex].value;
+            localStorage.setItem("selectedValue", selectedValue);
+            window.location.href = "";
+            }
+        </script>
+        </div>
+            <img style="width: 100%; height: 100%"src="img/gg.png"/>
+        <div style="width: 100%; height: 100%; padding-top: 72px; padding-bottom: 72px; flex-direction: column; justify-content: flex-start; align-items: center; gap: 131px; display: inline-flex">
+            <div style="width: 1088px; text-align: justify; color: black; font-size: 20px; font-family: Inter; font-weight: 400; word-wrap: break-word">Acquiring a job today requires a blend of professional qualifications and essential soft skills. These qualities promote effective collaboration and contribute to a positive workplace environment. Notably, the specific skills and qualifications sought may differ depending on the profession and industry, but the ones listed are generally valuable across a wide range of employment areas. Now, let's explore the essential language, skills, and experiences that will improve our arsenal in preparation for a potential position at Google.</div>
+            <div style="flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 32px; display: flex">
+                <div style="width: 1321px; height: 0px; border: 1px black solid"></div>
+                <div style="justify-content: flex-start; align-items: flex-start; gap: 36px; display: inline-flex">
+                    <div style="width: 190px; height: 74px; text-align: center; color: #00519B; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">BÙI GIA PHÚ<br/>ITDSIU21107</div>
+                    <div style="width: 71px; height: 0px; transform: rotate(90deg); transform-origin: 0 0; border: 1px black solid"></div>
+                    <div style="width: 220px; height: 74px; text-align: center; color: #00519B; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">ĐỖ DƯƠNG THỊNH<br/>ITDSIU21121</div>
+                    <div style="width: 71px; height: 0px; transform: rotate(90deg); transform-origin: 0 0; border: 1px black solid"></div>
+                    <div style="width: 245px; height: 74px; text-align: center; color: #00519B; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">NGUYỄN XUÂN VINH<br/>ITDSIU21069</div>
+                    <div style="width: 71px; height: 0px; transform: rotate(90deg); transform-origin: 0 0; border: 1px black solid"></div>
+                    <div style="width: 230px; height: 74px; text-align: center; color: #00519B; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">HOÀNG VĂN MẠNH<br/>ITDSIU21099</div>
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+</html>
